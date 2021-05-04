@@ -1,0 +1,19 @@
+<launch>
+
+    <arg name="topic" default="/camera/image_raw" />
+    <arg name="url" default="http://192.168.1.101/" />
+    <arg name="frame" default="http_camera" />
+    <arg name="fps" value="fps" />
+    <arg name="view" value="False" />
+    <arg name="camera_info_url" value="" />
+    <arg name="respawn" value="false" />
+
+    <node name="http_camera" pkg="sibot_video" type="http_cam_publisher.py" respawn="$(arg respawn)" output="screen" >
+        <param name="image_raw_topic" value="$(arg topic)" />
+        <param name="url" value="$(arg url)" />
+        <param name="frame_id" value="$(arg frame)" />
+        <param name="fps" value="$(arg fps)" />
+        <param name="gui_view" value="$(arg view)" />
+    </node>
+
+</launch>
